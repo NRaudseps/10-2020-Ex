@@ -1,1 +1,1 @@
-This repository will have all my assignments as PR.
+This repo will have all my given assignments as PR.
