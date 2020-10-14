@@ -9,14 +9,17 @@
 </head>
 <body>
 <form method="post">
-    <?php foreach ($tasks as $task): ?>
-        <div>
-            <label for="task"><?=$task->getTask()?></label>
-            <input type="checkbox" name="task[]" value="<?=$task->getTask()?>">
-        </div>
-    <?php endforeach; ?>
+    <?php for ($i = 0; $i < $id; $i++):
+        if ($tasks[$i][0] !== null) { ?>
+            <div>
+                <label for="task"><?= $tasks[$i][1] ?></label>
+                <input type="checkbox" name="task[]" value="<?= $tasks[$i][0] ?>">
+            </div>
+        <?php }
+    endfor; ?>
 
     <div style="height: 30px"></div>
+    <input type="text" name="taskQuery">
     <input type="submit">
 </form>
 </body>
