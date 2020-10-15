@@ -1,0 +1,20 @@
+{
+  "name": "vendor_name/COMPOSER",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "niklavs",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "ramsey/uuid": "^4.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
