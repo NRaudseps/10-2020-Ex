@@ -8,22 +8,26 @@
     <title>Safe Pin</title>
 </head>
 <body>
-    <form method="post">
-        <div>
-            <button type="button" name="num">1</button>
-            <button type="button">2</button>
-            <button type="button">3</button>
-        </div>
-        <div>
-            <button type="button">4</button>
-            <button type="button">5</button>
-            <button type="button">6</button>
-        </div>
-        <div>
-            <button type="button">7</button>
-            <button type="button">8</button>
-            <button type="button">9</button>
-        </div>
-    </form>
+<div><?= $display; ?></div>
+<div style="height: 20px"><?= str_repeat('*', strlen($_SESSION['input'])); ?></div>
+<form method="post">
+    <div>
+        <input type="submit" name="num" value="1">
+        <input type="submit" name="num" value="2">
+        <input type="submit" name="num" value="3">
+    </div>
+    <div>
+        <input type="submit" name="num" value="4">
+        <input type="submit" name="num" value="5">
+        <input type="submit" name="num" value="6">
+    </div>
+    <div>
+        <input type="submit" name="num" value="7">
+        <input type="submit" name="num" value="8">
+        <input type="submit" name="num" value="9">
+    </div>
+    <div style="height: 15px;"></div>
+    <input type="submit" name="submit">
+</form>
 </body>
 </html>
