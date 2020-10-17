@@ -26,8 +26,9 @@
         <input type="submit" name="num" value="8">
         <input type="submit" name="num" value="9">
     </div>
+    <div style="display: flex; position: relative; left: 28px;"><input type="submit" name="num" value="0"></div>
     <div style="height: 15px;"></div>
-    <input type="submit" name="submit">
+    <div style="display: flex; position: relative; left: 13px;"><input type="submit" name="submit"></div>
 </form>
 </body>
 </html>

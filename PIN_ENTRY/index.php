@@ -2,10 +2,8 @@
 
 require_once 'vendor/autoload.php';
 
-use App\Pin;
+use App\Person;
 
-//Get Pin
-$pin = new Pin();
 //This var will show in the end if the pin code was correct or not
 $display = '';
 session_start();
@@ -19,14 +17,20 @@ if (!isset($_SESSION['input'])) {
     $_SESSION['input'] .= $_POST['num'];
 }
 
+
 //If the user submits
 if (isset($_POST['submit'])) {
-    //Check the pin. If correct unlock else lock.
-    if ($pin->checkPin((int)$_SESSION['input'])) {
+    //Find the person in the db
+    $person = Person::findPerson($_SESSION['input']);
+    //If empty then no person with than pin was found
+    if (!empty($person)) {
         $display = 'Unlocked';
     } else {
         $display = 'Locked';
     }
+    //Set the session id as the person id
+    $_SESSION['id'] = $person[0];
+
     //Start all over again
     $_SESSION['input'] = '';
 }
