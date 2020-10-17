@@ -8,15 +8,15 @@
     <title>Like or Dislike</title>
 </head>
 <body>
-    <?php foreach ($images as $image) : ?>
-        <div>
-            <img src="./img/<?=$image?>">
-            <form action="" method="post">
-                <input type="submit" name="<?=$image?>" value="Like">
-                <input type="submit" name="<?=$image?>" value="Dislike">
-            </form>
-        </div>
-        <div style="height: 30px"></div>
-    <?php endforeach; ?>
+<?php for ($i = 0; $i < count($images); $i++) : ?>
+    <div>
+        <img src="<?= $images[$i] ?>">
+        <form action="" method="post">
+            <input type="submit" name="<?= $imageNames[$i] ?>" value="Like">
+            <input type="submit" name="<?= $imageNames[$i] ?>" value="Dislike">
+        </form>
+    </div>
+    <div style="height: 30px"></div>
+<?php endfor; ?>
 </body>
 </html>
