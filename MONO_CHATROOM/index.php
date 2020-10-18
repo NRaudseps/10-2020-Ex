@@ -37,3 +37,10 @@ if (isset($_POST['submit'])) {
 
 //Load the view
 require './views/pin.view.php';
+
+//If unlocked go to the chatroom page
+if ($display === 'Unlocked') {
+    sleep(1);
+    header("Location: ./views/chatroom.view.php?id=" . $_SESSION['id']);
+    exit();
+}

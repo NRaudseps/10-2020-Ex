@@ -23,4 +23,19 @@ class Person
         //If nothing return an empty array
         return [];
     }
+
+    public static function getName(string $id): string
+    {
+        //Simply finds the name of the person with the id
+        $file = fopen('../data/persons.csv', 'r+');
+        while (($data = fgetcsv($file)) !== FALSE) {
+            if ($data[0] === $id) {
+                return $data[1];
+            }
+        }
+        fclose($file);
+
+        //If nothing then returns an empty string
+        return '';
+    }
 }
