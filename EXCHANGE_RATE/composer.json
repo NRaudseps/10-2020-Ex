@@ -1,0 +1,22 @@
+{
+  "name": "vendor_name/EXCHANGE_RATE",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "niklavs",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "imangazaliev/didom": "^1.16",
+    "sabre/xml": "^2.2",
+    "doctrine/dbal": "^2.12"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
