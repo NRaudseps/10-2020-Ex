@@ -36,6 +36,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $namespace = '\App\Controllers\\';
 
     $r->addRoute('GET', '/', $namespace . 'StockController@search');
+    $r->addRoute('GET', '/show', $namespace . 'StockController@show');
 });
 
 // Fetch method and URI from somewhere
