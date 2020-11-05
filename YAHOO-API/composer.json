@@ -14,7 +14,8 @@
     "doctrine/dbal": "^2.12",
     "vlucas/phpdotenv": "^5.2",
     "symfony/dotenv": "^5.1",
-    "scheb/yahoo-finance-api": "^4.0"
+    "scheb/yahoo-finance-api": "^4.0",
+    "nesbot/carbon": "^2.41"
   },
   "autoload": {
     "psr-4": {
