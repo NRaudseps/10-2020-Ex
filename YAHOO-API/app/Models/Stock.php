@@ -9,14 +9,16 @@ class Stock
     protected float $open;
     protected float $close;
     protected int $volume;
+    protected string $timeStamp;
 
-    public function __construct(string $symbol, string $name, float $open, float $close, int $volume)
+    public function __construct(string $symbol, string $name, float $open, float $close, int $volume, string $timeStamp)
     {
         $this->symbol = $symbol;
         $this->name = $name;
         $this->open = $open;
         $this->close = $close;
         $this->volume = $volume;
+        $this->timeStamp = $timeStamp;
     }
 
     public function symbol(): string
@@ -42,5 +44,10 @@ class Stock
     public function volume(): int
     {
         return $this->volume;
+    }
+
+    public function timeStamp(): string
+    {
+        return $this->timeStamp;
     }
 }

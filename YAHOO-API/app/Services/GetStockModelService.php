@@ -7,6 +7,7 @@ use App\Repository\StockRepository;
 use App\Models\Stock;
 use Scheb\YahooFinanceApi\ApiClient;
 use Scheb\YahooFinanceApi\ApiClientFactory;
+use Carbon\Carbon;
 
 class GetStockModelService
 {
@@ -19,10 +20,11 @@ class GetStockModelService
 
     public function getModel(string $symbol): Stock
     {
+        $name = htmlspecialchars($symbol);
         $dbData = $this->stockRepository->getBySymbol($symbol)[0];
-//        die(var_dump($dbData));
+        $dt = (Carbon::create($dbData['updated_at']));
 
-        if(empty($dbData)) {
+        if (empty($dbData) || ($dt->diffInMinutes(Carbon::now('Europe/London')) - 120 > -1)) {
             $client = ApiClientFactory::createApiClient();
 
             $searchResult = $client->search($name)[0];
@@ -34,21 +36,21 @@ class GetStockModelService
                 $searchResult->getName(),
                 $historicalData->getOpen(),
                 $historicalData->getClose(),
-                $historicalData->getVolume()
+                $historicalData->getVolume(),
+                Carbon::now('Europe/London')
             );
-        }
-        else {
 
+            (new StoreStockService)->store($stock);
+        } else {
             $stock = new Stock(
                 $dbData['symbol'],
                 $dbData['name'],
-                (float) $dbData['open'],
-                (float) $dbData['close'],
-                (int) $dbData['volume'],
+                (float)$dbData['open'],
+                (float)$dbData['close'],
+                (int)$dbData['volume'],
+                $dt
             );
         }
-
-        $this->stockRepository->save($stock);
 
         return $stock;
     }

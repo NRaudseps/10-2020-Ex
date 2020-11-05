@@ -16,6 +16,12 @@ class StoreStockService
 
     public function store(Stock $stock)
     {
-        $this->stockRepository->save($stock);
+        $stockQuery = $this->stockRepository->getBySymbol($stock->symbol());
+
+        if(empty($stockQuery)) {
+            $this->stockRepository->save($stock);
+        }else {
+            $this->stockRepository->update($stock);
+        }
     }
 }
